@@ -1,0 +1,81 @@
+/* Imports */
+@font-face {
+  font-family: Montserrat;
+  src: url("../ttf/Montserrat-VariableFont_wght.ttf");
+}
+
+/* Global rules */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat';
+}
+
+/* Tag rules */
+html {
+    background: url("../img/bg.jpg");
+    color: whitesmoke;
+}
+
+a {
+    text-decoration: none;
+    color: rgb(216, 230, 255);
+    transition: color 0.3s ease-in-out;
+}
+
+a:hover {
+    color: rgb(94, 255, 247);
+}
+
+ul {
+    list-style-type: none;
+}
+
+hr {
+    margin: auto;
+    width: 85%;
+    color: blueviolet;
+    border-radius: 100%;
+}
+
+/* Upper wrapper and navigation bar */
+.content {
+    background: rgba(20, 17, 37, 0.5);
+    height: 100vh;
+}
+.upperWrapper {
+    position: relative;
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    margin-bottom: 1em;
+    padding: 5px;
+    background: rgba(20, 17, 37, 0.5);
+}
+
+.logo {
+    padding: 0px 0px 0px 5px;
+    font-size: 1em;
+    font-weight: bolder;
+}
+
+.navBar {
+    text-align: center;
+    font-size: 1em;
+}
+
+.navBar nav ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+/* Presentation wrapper */
+.presentation {
+    width: 100%;
+    text-align: center;
+    margin-top: 10em;
+    padding: 1em 3em;
+    line-height: 35px;
+    font-size: 1.2em;
+}

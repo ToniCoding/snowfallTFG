@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/ftpStyles.css">
+        <title>Sitios disponibles</title>
+    </head>
+    <body>
+        <div class="upperWrapper">
+            <div class="logo">
+                <p><i><a href="../index.html">SnowFall - Site Manager</a></i></p>
+            </div>
+            <div class="navBar">
+                <nav>
+                    <ul>
+                        <li><a href="https://ftp.snowfall.net/html/ftpSites.php">Sitios</a></li>
+                        <li><a href="https://www.snowfall.net/html/login.html">Nuevo sitio</a></li>
+                        <li><strong><a href="">Soporte</a></strong></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <div>
+            <form action="../php/sendSupport.php" method="post" style="padding-left: 15px;">
+                <label for="contactMail">Correo de contacto</label><br>
+                <input type="email" name="contactMail">
+
+                <br><br><br>
+
+                <p>Explicación</p>
+                <textarea name="reason" rows="4" cols="50">
+                    Se lo más específico posible para intentar aislar el problema lo antes posible.
+                </textarea>
+
+                <br><br>
+
+                <button type="submit">Enviar a soporte</button><button type="reset">Limpiar datos</button>
+            </form>
+        </div>
+    </body>
+</html>

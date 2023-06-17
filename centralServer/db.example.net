@@ -1,0 +1,16 @@
+$TTL	24h
+@	IN	SOA	example.net. admin.example.net. (
+			20230521	; Serial
+			1d		; Refresh
+			2h		; Retry
+			1w		; Expire
+			1h		; Minimum TTL
+) 
+
+; Registros N(ame)S(erver) - NS
+@			IN	NS	central.snowfall.net.	; Servidor de nombres primario.
+
+; Registros A(dress) - A
+central			IN	A	192.168.21.254		; Dirección IP del servidor DNS.
+data			IN	A	192.168.21.253		; Dirección IP del servidor DATA.
+www			IN	A	192.168.21.253		; Dirección IP del servidor HTTP.

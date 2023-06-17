@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/admin.css">
+    <title>Reportar un fallo</title>
+</head>
+<body>
+    <form action="../bndphp/registerBug.php" method="post" style="margin: 2rem 0rem 0rem 2rem">
+        
+        <label for="bugReason">Razón de bug</label>
+        <input type="text" name="bugReason" required><br/><br/>
+
+        <label for="bugPrio" title="Prioridad UNO(1) debe ser algo de extrema IMPORTANCIA">Prioridad</label>
+        <input type="radio" name="bugPrio" value="0" required>0
+        <input type="radio" name="bugPrio" value="1" required>1
+	<br/><br/>
+
+        <label for="bugDpt">Departamento al que corresponde</label>
+        <select name="bugDpt" required>
+            <option selected hidden></option>
+            <option value="frontend">Front-end</option>
+            <option value="backend">Back-end</option>
+            <option value="others">Otros</option>
+        </select><br/><br/>
+
+        <button type="submit">Enviar fallo</button>
+        <button type="reset">Limpiar datos</button>
+    </form>
+</body>
+</html>

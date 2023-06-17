@@ -1,0 +1,33 @@
+#!/bin/bash
+
+# General variables.
+currentDate=$(date +"%Y-%m-%d")
+
+# Define SSH connection variables.
+ssh_user="automatization"
+ssh_host="192.168.21.254"
+ssh_port="22"
+ssh_key="/home/automatization/.ssh/id_rsa"
+
+# Define path output of the compressed file in remote server.
+local_output_dir="/home/automatization/"
+local_output_file="${local_output_dir}${currentDate}-autobackups.tar.gz"
+
+# Define the array list of directories and files to compress.
+directories=("/var/www/html/" "/etc/resolv.conf" "/etc/apache2/" "/etc/vsftpd.conf")
+
+# Variable to store tar command.
+tar_command="tar -czf $local_output_file -C"
+
+# Append to tar command the directories.
+for dir in ${directories[@]}; do
+	tar_command+=" $dir"
+done
+
+tar_command+=" ."
+
+# Variable to store scp command.
+scp_command="scp -P $ssh_port -o "IdentitiesOnly=yes" -o "StrictHostKeyChecking=no" -o "UserKnownHostsFile=/dev/null" $local_output_file $ssh_user@$ssh_host:/home/automatization/autobackups"
+
+# Execute definitive command.
+eval "$tar_command | $scp_command"

@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# Vars.
+origin="/home"
+dest="/var/www/html"
+
+# Parameter treatment.
+username=$1
+site=$2
+
+# Move files.
+mv "/home/$username/$site/"* "/var/www/html/$site"
+
+# Execution confirmation
+echo "Archivos aprobados."

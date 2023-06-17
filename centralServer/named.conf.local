@@ -1,0 +1,11 @@
+//include "/etc/bind/zones.rfc1918";
+
+zone "snowfall.net" {
+	type master;
+	file "/etc/bind/db.snowfall.net";
+};
+
+zone "21.168.192.in-addr.arpa" {
+	type master;
+	file "/etc/bind/db.snowfall-reverse.net";
+};

@@ -1,0 +1,43 @@
+#!/bin/bash
+
+# Attention! This script has no action confirmation since its meant to be executed by CRONTAB and
+# without MTA it wouldn't make sense.
+
+# Async.
+#sleep 5
+
+# Variables.
+named_conf="/etc/bind/named.conf.local"
+nuevo_ttl=3600
+archivo_destino="/etc/bind/db.$nuevo_nombre"
+
+# Zone details and treatment.
+namepath="/home/administrator/tmp/name"
+contenido=$(cat $namepath)
+nuevo_nombre=$archivo_destino$(echo "$contenido" | tr -d '[:space:]')
+solo_nombre=$(echo "$contenido" | tr -d '[:space:]')
+
+echo $nuevo_nombre
+echo $solo_nombre
+
+# Verify if name at file already exists.
+if [ ! -f "$nuevo_nombre" ];
+then
+	# Copy existing example db to new db.
+	cp "/etc/bind/db.example.net" "$nuevo_nombre"
+
+	# Modify the file with sed.
+	sed -i "s/central.snowfall.net/g" "central.$nuevo_nombre.net"
+	sed -i "s/example.net/$solo_nombre/g" "$nuevo_nombre"
+	sed -i "s/3600/$nuevo_ttl/g" "$nuevo_nombre"
+
+	# Add zone configuration to named.conf.local.
+	echo "
+zone \"$solo_nombre\" {
+	type master;
+	file \"$nuevo_nombre\";
+};" >> $named_conf
+
+	# Restart the service.
+	systemctl restart bind9
+fi

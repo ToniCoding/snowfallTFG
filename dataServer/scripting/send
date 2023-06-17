@@ -1,0 +1,28 @@
+#!/bin/bash
+
+# Variables
+archivo_local="/home/administrator/tmp/name"
+server_remoto="192.168.21.254"
+usuario_remoto="administrator"
+password_remoto="admin"
+directorio_remoto="/home/administrator/tmp/"
+
+# Adds .net for compatibility with bind automatization.
+read -r content < $archivo_local
+
+if [ ! $content == "" ];
+then
+echo "$content.net" > $archivo_local
+#Send the file using ftp.
+ftp -n $server_remoto <<END_SCRIPT
+quote USER administrator
+quote PASS admin
+cd $directorio_remoto
+put $archivo_local
+quit
+END_SCRIPT
+
+# Leave it empty for the next zone
+echo "" > $archivo_local
+
+fi

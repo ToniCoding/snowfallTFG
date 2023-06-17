@@ -1,0 +1,74 @@
+/* Imports */
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
+/* Global rules */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Tag rules */
+html {
+    background: url('../img/fondo2.jpg');
+    background-position: bottom;
+    color: white;
+}
+
+a {
+    text-decoration: none;
+    color: rgb(80, 123, 198);
+    transition: color 0.3s ease-in-out;
+}
+
+a:hover {
+    color: rgb(0, 75, 203);
+}
+
+ul {
+    list-style-type: none;
+}
+
+hr {
+    margin: auto;
+    width: 85%;
+    color: blueviolet;
+    border-radius: 100%;
+}
+
+fieldset {
+    border: 0px;
+}
+
+/* Custom rules */
+.loginForm {
+    position: relative;
+    margin: auto;
+    padding: 2rem;
+    width: 50%;
+    background: rgba(40, 47, 59, 0.8);
+    border: 2px solid rgb(122, 122, 161);
+    border-radius: 45px;
+}
+
+.loginForm fieldset {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    text-align: center;
+    font-size: 1.2em;
+}
+
+.loginForm fieldset button {
+    width: 15rem;
+    margin: 10px auto;
+    padding: 3px;
+}
+
+.form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}

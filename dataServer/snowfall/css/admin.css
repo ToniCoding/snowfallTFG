@@ -1,0 +1,70 @@
+/* Imports */
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
+/* Global rules */
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Tag rules */
+html {
+    background: url('../img/fondo.png');
+    color: white;
+}
+
+a {
+    text-decoration: none;
+    color: rgb(80, 123, 198);
+    transition: color 0.3s ease-in-out;
+}
+
+a:hover {
+    color: rgb(0, 75, 203);
+}
+
+ul {
+    list-style-type: none;
+}
+
+hr {
+    margin: auto;
+    width: 85%;
+    color: blueviolet;
+    border-radius: 100%;
+}
+
+/* Custom rules */
+/* Upper wrapper */
+.upperWrapper {
+    position: relative;
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    margin-bottom: 1em;
+}
+
+.logo {
+    padding: 5px 0px 0px 5px;
+    font-size: 1.3em;
+    font-weight: bolder;
+}
+
+.navBar {
+    text-align: center;
+}
+
+.navBar nav ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+/* Content wrapper */
+.functionContents {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-auto-flow: row;
+    padding: 3em;
+}

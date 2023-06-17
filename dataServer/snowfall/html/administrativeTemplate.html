@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/admin.css">
+    <title>Management | Panel de administración</title>
+</head>
+<body>
+    <div class="upperWrapper">
+        <div class="logo">
+            <p>SnowFall - Administración</p>
+        </div>
+        <div class="navBar">
+            <nav>
+                <ul>
+                    <li><a href="./administrativeTemplate.html">User administration</a></li>
+                    <li><a href="../bndphp/sysLog.php">System logging</a></li>
+                    <li><a href="./releaseNote.html">Release note</a></li>
+                    <li><a href="./about.html" class="active">About</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <div class="functionContents">
+        <div class="function">
+            <h3>Crear nuevo usuario</h3>
+            <form action="../bndphp/administratorFunctions.php" method="post" enctype="multipart/form-data">
+                
+                <input type="hidden" name="formType" value="createUser"/> <!-- Used to identify form -->
+                
+                <input type="email" name="email" placeholder="E-Mail" required/>
+                
+                <input type="text" name="username" placeholder="Nombre de usuario" required/>
+                
+                <input type="password" name="password" placeholder="Contraseña" required/><br>
+                
+                <button type="submit">Crear</button>
+
+            </form>
+        </div>
+        <div class="function">
+            <h3>Eliminar usuario</h3>
+            <form action="../bndphp/administratorFunctions.php" method="post" enctype="multipart/form-data">
+                
+                <input type="hidden" name="formType" value="deleteUser"/> <!-- Used to identify form -->
+                
+                <input type="text" name="username" placeholder="Nombre de usuario"/><br>
+                
+                <button type="submit">Eliminar</button>
+
+            </form>
+        </div>
+        <div class="function">
+            <h3>Modificar un usuario</h3>
+            <form action="../bndphp/administratorFunctions.php" method="post" enctype="multipart/form-data">
+                
+                <input type="hidden" name="formType" value="modifyUser"> <!-- Used to identify form -->
+                
+                <input type="text" name="username" placeholder="Nombre de usuario" required/>
+               
+                <select name="property" required>
+                    <option selected disabled hidden>Propiedad...</option>
+                    <option value="email">Email</option>
+                    <option value="uname">Username</option>
+                    <option value="password">Password</option>
+                </select>
+                
+                <input type="text" name="newValue" placeholder="Nuevo valor"/><br>
+                
+                <button type="submit">Modificar</button>
+
+            </form>
+        </div>
+        <div class="function">
+            <h3>Dar de baja un plan</h3>
+            <form action="../bndphp/administratorFunctions.php" method="post" enctype="multipart/form-data">
+
+                <input type="hidden" name="formType" value="unsubPlan"> <!-- Used to identify form -->
+
+                <input type="text" name="username" placeholder="Nombre de usuario" required/>
+
+                <input type="text" name="orderId" placeholder="ID" required/><br>
+
+                <button type="submit">Desactivar plan</button>
+
+            </form>
+        </div>
+        <div class="function">
+            <h3>Dar de alta un plan</h3>
+            <form action="../bndphp/administratorFunctions.php" method="post" enctype="multipart/form-data">
+
+                <input type="hidden" name="formType" value="subPlan"> <!-- Used to identify form -->
+
+                <input type="text" name="username" placeholder="Nombre de usuario" required/>
+
+                <input type="text" name="orderId" placeholder="ID" required/><br>
+
+                <button type="submit">Reactivar plan</button>
+
+            </form>
+        </div>
+        <div class="function">
+            <h3>Comprobar si existe</h3>
+            <form action="../bndphp/administratorFunctions.php" method="post" enctype="multipart/form-data">
+
+                <input type="hidden" name="formType" value="checkRun"> <!-- Used to identify form -->
+
+                <input type="text" name="tableCheck" placeholder="Tabla de la base de datos" required/>
+
+                <input type="text" name="columnCheck" placeholder="Columna" required/>
+
+                <input type="text" name="valueCheck" placeholder="Valor de la columna" required/><br>
+
+                <button type="submit">Comprobar</button>
+
+            </form>
+        </div>
+    </div>
+</body>
+</html>

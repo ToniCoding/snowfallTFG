@@ -1,0 +1,62 @@
+#!/bin/bash
+
+# Site details and treatment.
+namepath="/home/administrator/tmp/name"
+read -r nuevo_nombre < "$namepath"
+
+# Configuration variables.
+server_admin="webadmin@$nuevo_nombre"
+document_root="/var/www/html/$nuevo_nombre"
+
+# Check if site already exists.
+if [ ! -f "/etc/apache2/sites-available/$nuevo_nombre" ];
+then
+echo "Creating zone"
+cp "/etc/apache2/sites-available/snowfall.net.conf" "/etc/apache2/sites-available/$nuevo_nombre"
+
+# Secure SSL VirtualHost (port 443).
+echo "
+<VirtualHost *:80>
+	ServerName www.$nuevo_nombre.net
+	ServerAlias $nuevo_nombre.net
+	Redirect permanent / https://www.$nuevo_nombre.net
+</VirtualHost>
+
+<VirtualHost *:443>
+	# ServerDirectives.
+	ServerName www.$nuevo_nombre.net
+	ServerAlias $nuevo_nombre.net
+	ServerAdmin $server_admin.net
+	DocumentRoot $document_root
+
+	# SSL directives.
+	SSLEngine On
+	SSLCertificateFile /etc/ssl/certs/snowfallApache.crt
+	SSLCertificateKeyFile /etc/ssl/private/snowfallApache.key
+
+	# Directory directive.
+	<Directory $document_root>
+		Options FollowSymLinks Multiviews
+		AllowOverride None
+		Require all granted
+	</Directory>
+</VirtualHost>
+" > /etc/apache2/sites-available/$nuevo_nombre.net.conf
+
+# Enable and restart Apache2 service.
+sudo a2ensite $nuevo_nombre.net.conf #> /dev/null 2>&1 # Standard output redirection.
+sudo systemctl restart apache2
+
+fi
+
+# Once activated and created (if necessary) check if document root exists.
+if [ ! -f "/var/www/html/$nuevo_nombre" ];
+then
+	echo "Creating dir"
+	mkdir /var/www/html/$nuevo_nombre
+	touch /var/www/html/$nuevo_nombre/index.html
+	echo "<h1>Este contenido ha sido generado por el servidor. Sube tus archivos en el <a href='https://ftp.snowfall.net'>gestor</a>." >> /var/www/html/$nuevo_nombre/index.html
+fi
+
+# Permisson management.
+chmod -R 755 /var/www/html/$nuevo_nombre

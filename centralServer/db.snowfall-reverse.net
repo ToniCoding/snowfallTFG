@@ -1,0 +1,15 @@
+$TTL 86400
+@	IN	SOA	snowfall.net.	admin.snowfall.net. (
+			20230521	; Serial
+			86400		; Refresh
+			7200		; Retry
+			3600000		; Expire
+			172800		; Minimum TTL
+)
+
+; Registros NS - NameServer
+@	IN	NS	central.snowfall.net.
+
+; Registros PTR - Pointer
+254	IN	PTR	central.snowfall.net.
+253	IN	PTR	data.snowfall.net.

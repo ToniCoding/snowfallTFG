@@ -1,0 +1,23 @@
+#!/bin/bash
+
+# Establish connection to MySQL DB.
+DB_HOST="localhost"
+DB_USER="admin"
+DB_PASSWORD="1234"
+DB_NAME="snowfall"
+
+# Query.
+QUERY="SELECT uname FROM users"
+
+# Obtain data from query.
+USERS=$(mysql -h "$DB_HOST" -u "$DB_USER" -p"$DB_PASSWORD" -D "$DB_NAME" -N -B -e "$QUERY")
+
+# Iter and create users.
+while IFS= read -r username; do
+	# Create user.
+	useradd -m -s /bin/bash "$username"
+
+	# Establish a password for user.
+	echo "$username:1234" | chpasswd
+
+done <<< "$USERS"
